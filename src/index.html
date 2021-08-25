@@ -20,7 +20,7 @@
     </body>
 
     <script>
-        var color_scale = chroma.scale(['green', 'yellow', 'red'])
+        var color_scale = chroma.scale(['green', 'yellow', 'blue', 'purple', 'red'])
 
         var map = L.map('mapid').setView([
             60.17,
@@ -42,7 +42,7 @@
                     "color": '#555555',
                     "fillOpacity": 0.5
                 }
-        axios.get(`http://localhost:3000/YKRGrid`).then(res => {
+        axios.get(`https://api.metropaccess.max.kalhama.fi/YKRGrid`).then(res => {
             geoJSONLayer = L.geoJSON(res.data, {
                 onEachFeature: onEachFeature,
                 style: defaultStyle
@@ -51,12 +51,9 @@
 
         var marker;
 
+        const UPLIMIT = 50
         const getColor = (val) => {
-            return val && val < 36 ? color_scale(val / 30).hex() : '#000000'
-        }
-
-        const getOpacity = (val) => {
-            return val && val < 36 ? 0.5 : 0.3
+            return val ? color_scale(Math.min(Math.max(0, val - 5) / UPLIMIT, 1)).hex() : '#000000'
         }
 
         function whenClicked(e) {
@@ -65,7 +62,7 @@
             marker = L.marker(e.latlng).addTo(map);
 
             const ykrid = e.sourceTarget.feature.properties.YKR_ID
-            axios.get(`http://localhost:3000/travelTimes?to=${ykrid}`)
+            axios.get(`https://api.metropaccess.max.kalhama.fi/travelTimes?to=${ykrid}`)
                 .then(({ data }) => {
                     // convert arr to object so it is faster to search with PK
                     const obj = {}
@@ -74,11 +71,11 @@
                     })
 
                     geoJSONLayer.eachLayer(function (layer) {  
-                        const { publicTransportRushhourTime } = obj[layer.feature.properties.YKR_ID]
-                            layer.setStyle({ 
-                                color: getColor(publicTransportRushhourTime),
-                                fillOpacity: getOpacity(publicTransportRushhourTime)
-                            })
+                        let { publicTransportRushhourTime } = obj[layer.feature.properties.YKR_ID]
+                        layer.setStyle({ 
+                            color: getColor(publicTransportRushhourTime)
+                            // fillOpacity: getOpacity(publicTransportRushhourTime)
+                        })
                     })
                 })            
         }

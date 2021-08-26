@@ -1,5 +1,7 @@
 <html>
     <head>
+        <meta charset="UTF-8">
+
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin=""/>
@@ -10,13 +12,16 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js" integrity="sha512-yocoLferfPbcwpCMr8v/B0AB4SWpJlouBwgE0D3ZHaiP1nuu5djZclFEIj9znuqghaZ3tdCMRrreLoM8km+jIQ==" crossorigin="anonymous"></script>
         
         <style>
-            #mapid { height: 100vh; }
+            #mapid { height: 90vh; }
             body { margin: 0; }
         </style>
     </head>
     
     <body>
         <div id="mapid"></div>
+        <div>Värit menee järkässä ['green', 'yellow', 'blue', 'purple', 'red'] silleen et täysin punanen on jos matka-aika on 55min tai yli</div>
+        <div>Kiitosta Helsingin Yliopiston Metropaccess-tiimille. Tämä sivusto ei ole tutkimusryhmän tekemä, mutta käyttää ryhmän keräämää dataa dynaamisien visualisaatioiden tuottamiseen.</div>
+        <div><a href="https://github.com/metropaccess-visualiser">Sivuston lähdekoodi</a>. <a href="https://blogs.helsinki.fi/saavutettavuus/">Metropaccess-hankkeen nettisivut</a></div>
     </body>
 
     <script>

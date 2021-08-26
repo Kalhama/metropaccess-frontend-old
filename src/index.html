@@ -53,7 +53,7 @@
 
         const UPLIMIT = 50
         const getColor = (val) => {
-            return val ? color_scale(Math.min(Math.max(0, val - 5) / UPLIMIT, 1)).hex() : '#000000'
+            return val !== null ? color_scale(Math.min(Math.max(0, val - 5) / UPLIMIT, 1)).hex() : '#000000'
         }
 
         function whenClicked(e) {
@@ -62,7 +62,7 @@
             marker = L.marker(e.latlng).addTo(map);
 
             const ykrid = e.sourceTarget.feature.properties.YKR_ID
-            axios.get(`https://api.metropaccess.max.kalhama.fi/travelTimes?to=${ykrid}`)
+            axios.get(`https://api.metropaccess.max.kalhama.fi/travelTimes?to=${ykrid}&excludeCols=["walkTime","walkDistance","bikeSlowTime","bikeFastTime","bikeDistance","publicTransportRushhourDistance","publicTransportMiddayWaitingHome","publicTransportMiddayTime","publicTransportMiddayDistance","carRushhourTime","carRushhourDistance","carMiddayTime","carMiddayDistance","carSpeedLimitTime","year"]`)
                 .then(({ data }) => {
                     // convert arr to object so it is faster to search with PK
                     const obj = {}

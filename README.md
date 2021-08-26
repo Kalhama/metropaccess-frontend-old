@@ -18,5 +18,5 @@ LISENSSI
 —————————————————————————————————–
 Pääkaupunkiseudun-Matka-aikamatriisi, jonka tekijä on MetropAccess-hanke / Accessibility Research Group (Helsingin Yliopisto) on lisensoitu Creative Commons Nimeä 4.0 Kansainvälinen -lisenssillä. Lisätietoa lisenssistä: http://creativecommons.org/licenses/by/4.0/deed.fi
 
-Mikäli aineiston pohjalta laaditaan tieteellisiä julkaisuja, toivomme, että tekijät olisivat yhteydessä hankkeen johtajaan.
 
+Visualisaation ohjelmistolähdekoodi, jonka tekijä on Max Kalhama on lisensoitu Creative Commons Nimeä 4.0 Kansainvälinen -lisenssillä

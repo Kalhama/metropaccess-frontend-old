@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Max Kalhama <kalhama.max@gmail.com>",
-  "license": "GNU General Public License",
+  "license": "CC-BY-4.0",
   "scripts": {
     "deploy": "sh deploy.sh"
   }
